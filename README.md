@@ -1,3 +1,2 @@
-# Volunteer_Work
+## Instuctions on how to use Graph Maker 1.0
 
-Volunteer Work For Mr.Zhang
