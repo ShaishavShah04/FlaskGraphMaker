@@ -5,11 +5,19 @@
     <title>Main</title>
   </head>
   <body>
-    <h1> Upload the file to begin </h1>
-    <form action="/" method="post" enctype="multipart/form-data">
-      Choose the file: <input type="file" name="photo"/>
+    <h1> Submit the following details to begin! </h1>
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+
+      <p>Title Of Graph: <input type="text" name="title"/></p>
+      <p>X-Axis Label: <input type="text" name="x_axis"/></p>
+      <p>Y-Axis Label: <input type="text" name="y_axis"/></p>
+
+      <p>Choose the file: <input type="file" name="file"/></p>
       <BR>
-      <input type="submit" value="Upload"/>
+      <input type="submit" value="upload"/>
     </form>
+
+
   </body>
 </html>
