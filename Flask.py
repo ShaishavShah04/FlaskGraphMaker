@@ -4,7 +4,7 @@
 
 ## Imports
 import os
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -114,10 +114,11 @@ def make():
     plt.title(title)
     plt.xlabel(x_axis)
     plt.ylabel(y_axis)
-    plt.show()
+    plt.savefig('C:/Users/shais/PycharmProjects/Volunteer_Work/Uploads/graph.png')
+
     ##
 
-    return 'Ok'
+    return send_from_directory('C:/Users/shais/PycharmProjects/Volunteer_Work/Uploads', filename='graph.png', as_attachment = True)
 
 
 
