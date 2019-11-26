@@ -3,8 +3,24 @@
 ########################
 
 ## Imports
-import os
-from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
+import os, platform, sys
+
+#from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
+
+osEnv = platform.system()
+try:
+    from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
+except ModuleNotFoundError:
+    if osEnv == "Windows":
+        os.system("python -m pip install -U pip")
+        os.system("python -m pip install flask")
+    else:
+        os.system("pip install -U pip")
+        os.system("pip install flask")
+    from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
+except:
+    sys.exit()
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -45,7 +61,7 @@ def upload_file():
     if request.method == 'POST':
         f = request.files['file']
         session['name'] = f.filename
-        f.save(os.path.join("C:/Users/shais/PycharmProjects/Volunteer_Work/Uploads", f.filename))
+        f.save(os.path.join(os.getcwd() + "/Uploads", f.filename))
 
     if request.method == 'POST':
         reqform = request.form
@@ -114,11 +130,11 @@ def make():
     plt.title(title)
     plt.xlabel(x_axis)
     plt.ylabel(y_axis)
-    plt.savefig('C:/Users/shais/PycharmProjects/Volunteer_Work/Uploads/graph.png')
+    plt.savefig(os.getcwd() + '/Uploads/graph.png')
 
     ##
 
-    return send_from_directory('C:/Users/shais/PycharmProjects/Volunteer_Work/Uploads', filename='graph.png', as_attachment = True)
+    return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True)
 
 
 
