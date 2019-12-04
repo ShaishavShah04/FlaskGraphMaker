@@ -2,29 +2,83 @@
 # Flask Code Application #
 ########################
 
-## Imports
+#### Setting Up WorkSpace
+### Imports
 import os, platform, sys
-
-#from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
-
 osEnv = platform.system()
+
+## Checking for Modules
 try:
     from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
 except ModuleNotFoundError:
     if osEnv == "Windows":
         os.system("python -m pip install -U pip")
+        pip = 1
         os.system("python -m pip install flask")
     else:
         os.system("pip install -U pip")
+        pip = 1
         os.system("pip install flask")
     from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
 except:
     sys.exit()
+##
+try:
+    import numpy as np
+except ModuleNotFoundError:
+    if osEnv == "Windows":
+        if pip != 1:
+            os.system("python -m pip install -U pip")
+        os.system("python -m pip install numpy")
+    else:
+        if pip != 1:
+            os.system("pip install -U pip")
+        os.system("pip install numpy")
+    import numpy as np
+except:
+    sys.exit()
+##
+try:
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import MaxNLocator
+except ModuleNotFoundError:
+    if osEnv == "Windows":
+        if pip != 1:
+            os.system("python -m pip install -U pip")
+        os.system("python -m pip install matplotlib")
+    else:
+        if pip != 1:
+            os.system("pip install -U pip")
+        os.system("pip install matplotlib")
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import MaxNLocator
+except:
+    sys.exit()
+##
+try:
+    import pandas as pd
+except ModuleNotFoundError:
+    if osEnv == "Windows":
+        if pip != 1:
+            os.system("python -m pip install -U pip")
+        os.system("python -m pip install pandas")
+    else:
+        if pip != 1:
+            os.system("pip install -U pip")
+        os.system("pip install pandas")
+    import pandas as pd
+except:
+    sys.exit()
+##
+try:
+    if not os.path.exists("./Upload/"):
+        os.makedirs("./Uploads/")
+except OSError:
+    print('smtg wrong')
+##
+## Make Dir
 
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from matplotlib.ticker import MaxNLocator
+
 
 ## Intializing flask
 
