@@ -76,10 +76,6 @@ try:
 except OSError:
     print('smtg wrong')
 ##
-## Make Dir
-
-
-
 ## Intializing flask
 
 app = Flask(__name__)
@@ -132,8 +128,14 @@ def upload_file():
 
 @app.route('/make1', methods = ['POST','GET'])
 def make():
-    # Organizing Info
+    #
+    try:
+        os.remove(os.getcwd() + '/Uploads/graph.png')
+    except:
+        pass
+    #
 
+    # Organizing Info
     title = session.get('title', None)
     x_axis = session.get('x_axis', None)
     y_axis = session.get('y_axis', None)
@@ -186,9 +188,13 @@ def make():
     plt.ylabel(y_axis)
     plt.savefig(os.getcwd() + '/Uploads/graph.png')
 
-    ##
+    ## Clean up directory raw data
+    os.remove(os.getcwd() + '/Uploads/' + namefile)
 
     return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True)
+
+
+    ##
 
 
 
