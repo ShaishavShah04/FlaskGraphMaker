@@ -8,16 +8,19 @@ import os, platform, sys
 osEnv = platform.system()
 
 ## Checking for Modules
+# Pip
+if osEnv == 'Windows':
+    os.system("python -m pip install -U pip")
+else:
+    os.system('sudo apt install python3-pip')
+##
+
 try:
     from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
 except ModuleNotFoundError:
     if osEnv == "Windows":
-        os.system("python -m pip install -U pip")
-        pip = 1
         os.system("python -m pip install flask")
     else:
-        os.system("pip install -U pip")
-        pip = 1
         os.system("pip install flask")
     from flask import Flask, render_template, request, redirect, session, url_for, send_from_directory
 except:
@@ -27,12 +30,8 @@ try:
     import numpy as np
 except ModuleNotFoundError:
     if osEnv == "Windows":
-        if pip != 1:
-            os.system("python -m pip install -U pip")
         os.system("python -m pip install numpy")
     else:
-        if pip != 1:
-            os.system("pip install -U pip")
         os.system("pip install numpy")
     import numpy as np
 except:
@@ -43,12 +42,8 @@ try:
     from matplotlib.ticker import MaxNLocator
 except ModuleNotFoundError:
     if osEnv == "Windows":
-        if pip != 1:
-            os.system("python -m pip install -U pip")
         os.system("python -m pip install matplotlib")
     else:
-        if pip != 1:
-            os.system("pip install -U pip")
         os.system("pip install matplotlib")
     import matplotlib.pyplot as plt
     from matplotlib.ticker import MaxNLocator
@@ -59,12 +54,8 @@ try:
     import pandas as pd
 except ModuleNotFoundError:
     if osEnv == "Windows":
-        if pip != 1:
-            os.system("python -m pip install -U pip")
         os.system("python -m pip install pandas")
     else:
-        if pip != 1:
-            os.system("pip install -U pip")
         os.system("pip install pandas")
     import pandas as pd
 except:
@@ -192,12 +183,6 @@ def make():
     os.remove(os.getcwd() + '/Uploads/' + namefile)
 
     return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True)
-
-
-    ##
-
-
-
 
 if __name__ == '__main__':
     app.run(debug = True)
