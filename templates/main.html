@@ -2,44 +2,32 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Main</title>
+    <title>Graph Maker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
-  <style>
-body {
-  background-color: grey;
-}
-
-h1 {
-  color: orange;
-  text-align: center;
-}
-
-h2 {
-}
-
-p {
-  font-family: verdana;
-  font-size: 20px;
-}
-</style>
   <body>
-  	<h1><center>Graph Maker </center></h1>
+    <header class="header">
+      <h1>Graph Maker</h1>
+    </header>
+  	
+    <main class="content">
+      <h2 class="sub-header"> Submit the following details to begin! </h2>
 
-    <h2> Submit the following details to begin! </h2>
-
-    <form action="/" method="POST" enctype="multipart/form-data">
-
-      <p>Title Of Graph: <input type="text" name="title"/></p>
-      <p>X-Axis Label: <input type="text" name="x_axis"/></p>
-      <p>Y-Axis Label: <input type="text" name="y_axis"/></p>
-      <p>Axises only have Integers? Y or N?: <input type="text" name = "Eznum"/> </p>
-      <p>Graph linear regression line with the data set (1) ? OR connect data points with line (2) ? OR scatter plot only (3): <input type="text" name = "lreg"/></p>
-
-      <p>Choose the file: <input type="file" name="file"/></p>
-      <BR>
-      <input type="submit" value="upload"/>
+      <form class="form" action="/" method="POST" enctype="multipart/form-data">
+        <label for="title" class="label">Title Of Graph:</label>
+        <input class="input" type="text" name="title" id="title"/>
+        <label for="x-axis" class="label">X-Axis Label:</label>
+        <input class="input" type="text" name="x_axis" id="x-axis"/>
+        <label for="y-axis" class="label">Y-Axis Label:</label>
+        <input class="input" type="text" name="y_axis" id="y-axis"/>
+        <label for="eznum" class="label">Axises only have Integers? Y or N?:</label>
+        <input class="input" type="text" name="Eznum" id="eznum"/>
+        <label for="lreg" class="label">Graph linear regression line with the data set (1)? OR connect data points with line (2)? OR scatter plot only (3)?: </label>
+        <input class="input" type="text" name = "lreg" id="lreg"/>
+        <label for="file" class="label filelabel"><i class="fas fa-upload"></i>  Choose a file</label>
+        <input class="inputfile" type="file" name="file" id="file"/>
+        <input class="upload" type="submit" value="Make Graph!"/>
     </form>
-
-
+    </main>
   </body>
 </html>

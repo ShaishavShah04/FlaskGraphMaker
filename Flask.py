@@ -65,7 +65,7 @@ try:
     if not os.path.exists("./Upload/"):
         os.makedirs("./Uploads/")
 except OSError:
-    print('smtg wrong')
+    pass
 ##
 ## Intializing flask
 
@@ -99,6 +99,11 @@ def home():
 
 @app.route('/', methods = ['POST','GET'])
 def upload_file():
+    try:
+        session.clear()
+    except:
+        pass
+    #
     if request.method == 'POST':
         f = request.files['file']
         session['name'] = f.filename
@@ -117,14 +122,14 @@ def upload_file():
 
 ## Processing
 
-@app.route('/make1', methods = ['POST','GET'])
+@app.route('/make', methods = ['POST','GET'])
 def make():
     #
     try:
         os.remove(os.getcwd() + '/Uploads/graph.png')
     except:
         pass
-    #
+
 
     # Organizing Info
     title = session.get('title', None)
@@ -147,9 +152,15 @@ def make():
     y_error = y_error1.fillna(0)
 
     ##
+    try:
+        global figure
+        figure = plt.clf()
+    except:
+        pass
+    ##
 
-    graph = plt.figure(1, figsize=(6.4, 4.8))  # size ( in inches)
-    graph = graph.add_subplot(111)
+    figure = plt.figure(1, figsize=(6.4, 4.8))  # size ( in inches)
+    graph = figure.add_subplot(111)
 
     if lreg in ['1', '3']:
         graph.plot(x, y, 'o', color='blue')
@@ -179,10 +190,16 @@ def make():
     plt.ylabel(y_axis)
     plt.savefig(os.getcwd() + '/Uploads/graph.png')
 
+    return redirect(url_for('done'))
+
+@app.route('/done', methods=['POST', 'GET'])
+def done():
+    #
+    namefile = session.get('name', None)
     ## Clean up directory raw data
     os.remove(os.getcwd() + '/Uploads/' + namefile)
-
-    return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True)
+    #
+    return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True) # and render_template("main.html")
 
 if __name__ == '__main__':
     app.run(debug = True)
