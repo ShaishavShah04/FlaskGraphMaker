@@ -1,33 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
   <head>
     <meta charset="utf-8">
     <title>Graph Maker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <script>
+      function scrollWin() {
+        window.scrollBy(0,1100);
+      }
+    </script>
   </head>
+
   <body>
     <header class="header">
       <h1>Graph Maker</h1>
     </header>
-  	
+
     <main class="content">
       <h2 class="sub-header"> Submit the following details to begin! </h2>
-
+      <h3 class="sub-sub-header"> Confused about the fields? <button onclick="scrollWin()">Instructions!</button> </h3>
+      <hr class="line">
       <form class="form" action="/" method="POST" enctype="multipart/form-data">
         <label for="title" class="label">Title Of Graph:</label>
-        <input class="input" type="text" name="title" id="title"/>
+        <input class="input" type="text" name="title" id="title" />
         <label for="x-axis" class="label">X-Axis Label:</label>
-        <input class="input" type="text" name="x_axis" id="x-axis"/>
+        <input class="input" type="text" name="x_axis" id="x-axis" />
         <label for="y-axis" class="label">Y-Axis Label:</label>
-        <input class="input" type="text" name="y_axis" id="y-axis"/>
-        <label for="eznum" class="label">Axises only have Integers? Y or N?:</label>
-        <input class="input" type="text" name="Eznum" id="eznum"/>
-        <label for="lreg" class="label">Graph linear regression line with the data set (1)? OR connect data points with line (2)? OR scatter plot only (3)?: </label>
-        <input class="input" type="text" name = "lreg" id="lreg"/>
-        <label for="file" class="label filelabel"><i class="fas fa-upload"></i>  Choose a file</label>
-        <input class="inputfile" type="file" name="file" id="file"/>
-        <input class="upload" type="submit" value="Make Graph!"/>
-    </form>
+        <input class="input" type="text" name="y_axis" id="y-axis" />
+        <label for="Eznum" class="label">Axises only have Integers?</label>
+        <br>
+        <input id="Eznum" class="inputradio" type="radio" name="Eznum" value="Y"> No Integers <br>
+        <input id="Eznum" class="inputradio" type="radio" name="Eznum" value="N"> Integers allowed <br>
+
+        <label for="lreg" class="label">Graph Options: </label>
+        <br>
+        <input id="lreg" class="inputradio" type="radio" name="lreg" value="1"> Graph linear regression line with the data set <br>
+        <input id="lreg" class="inputradio" type="radio" name="lreg" value="2"> Connect data points with lines <br>
+        <input id="lreg" class="inputradio" type="radio" name="lreg" value="3"> Scatter Plot Only <br>
+
+        <label for="file" class="label filelabel"><i class="fas fa-upload"></i>Choose a file:</label>
+
+        <input class="inputfile" type="file" name="file" id="file" />
+        <input class="upload" type="submit" value="Make Graph!" />
+
     </main>
+
+    <div class="instruct">
+        <h2 class="sub-header">Instructions</h2>
+        <hr class='line'>
+        <p class="text">
+        This is a simple graph making tool created for personal use. It can make simple graphs with basic options such as linear regression and error points.
+        </p>
+        <h5 class="fifth-head">Input Fields</h5>
+        <p class="text">Under the 3 text input tabs, input the desired corresponding labels.</p>
+        <h5 class="fifth-head">
+          Axis Integers
+        </h5>
+        <p class="text" >
+          This option is primarily only used if your data set involves tiny numbers. If your want axis's numbers to have a potential increments of between 0 - 1, click the option "Integers allowed". This will set your axis's open to having numbers in the format <i>x.yz</i>. If you prefer axis numbers to be only integers, click "No Integers".
+        </p>
+        <h5 class="fifth-head" >Graph Options</h5>
+        <p class="text" >This options are fairly straight forward. You can choose between linear regression, a line connecting the data points, and a simple scatter plot</p>
+        <p class="text" >Notice: For the line connecting option, the line will connect the points from top to bottom as put on the uploaded .csv file. The line will NOT take into consideration the x-values.</p>
+        <h5 class="fifth-head" >File Upload and Error Bars</h5>
+        <p class="text" >The file format supported is ONLY .csv!<br>The csv file is organized as follows</p>
+        <br>
+        <p class="text" ><b>NOTICE: THE RED TEXT IN THE IMAGE IS FOR EXAMPLE PURPOSES -- DO NOT ADD COLUMN NAMES TO YOUR CSV </b></p>
+        <img src="static/images/graph123.png" alt="CSV file annotated in excel">
+        <p class="text" > The <b>X Values</b> and <b>Y values</b> fields are mandatory. However, the remaining two fields (<b>X error</b> and <b>Y error</b>) are optional. They are for the error values of each point</p>
+
+    </div>
+
   </body>
+
 </html>

@@ -1,97 +1,141 @@
+cd @import url('https://fonts.googleapis.com/css?family=Lato');
+
 * {
-	margin: 0;
-	padding: 0;
-	font-family: monospace;
+    font-family: 'Raleway', sans-serif;
 }
 
-body {
-	background: #3AAE9D;
-	color: #fff;
+body,
+    .html {
+    background: #222222;
 }
 
 .header {
-	text-align: center;
-	font-size: 1.5rem;
-	padding-top: 1rem;
+    color: #66ffff;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 1rem;
+    font-weight: bold;
 }
 
 .content {
-	background: rgba(0,0,0,0.1);
-	margin: 2rem auto;
-	padding: 2rem 0;
-	width: 60%;
-	border-radius: 0.5rem;
-}
-
-.form {
-	text-align: center;
-}
-
-.form > * {
-	margin: 0 auto;
+    background: #f2f2f2;
+    padding: 2rem 0;
+    margin: 2rem auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 0.5rem;
+    width: 80%;
 }
 
 .sub-header {
-	text-align: center;
-	font-size: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #000000;
+    font-weight: bold;
+
+}
+
+.line {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .label {
-	display: block;
-	padding: 1rem 0 0;
-	font-size: 1.3rem;
-	margin: 0 1rem;
+    display: block;
+    position: relative;
+    font-weight: 900;
+    font-size: 1.35rem;
+    padding: 5px 5px 5px 8px;
+    margin: 10px auto;
+    height: 20px;
+    z-index: 5;
+    cursor: pointer;
 }
 
-.input {
-	display: block;
-	width: 60%;
-	height: 2rem;
+.input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    background-color: #66ffff;
+    color: black;
 }
 
 .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
 .filelabel {
-	font-size: 1rem;
-	position: relative;
-	top: 2rem;
-	display: inline;
-	cursor: pointer;
-	background: #E27D60;
-	color: white;
-	padding: 0.25rem 1rem 0.5rem;
-	font-family: arial;
+    font-size: 1rem;
+    position: relative;
+    top: 2rem;
+    display: inline;
+    cursor: pointer;
+    background: #66ffff;
+    color: Black;
+    padding: 0.25rem 1rem 0.5rem;
+    border-radius: 1rem;
 }
 
-.filelabel:hover, .filelabel:focus {
-	background: #e35424;
+.filelabel:hover,.filelabel:focus {
+    background: #e35424;
 }
 
 .upload {
-	font-family: arial;
-	font-weight: 900;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	top: 2rem;
-	display: block;
-	color: white;
-	cursor: pointer;
-	margin: 1rem 0;
-	padding: 0.5rem 1rem;
-	border-radius: 1rem;
-	background: #3AAE9D;
-	border: white solid 0.3rem;
+    font-weight: 900;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2rem;
+    display: block;
+    color: black;
+    cursor: pointer;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    background: #f2f2f2;
+    border: #66ffff solid 0.3rem;
 }
 
 .upload:hover {
-	color: #3AAE9D;
-	background: white;
+    color: #ff0000;
+    background: white;
+}
+
+.instruct {
+    background: #bfbfbf;
+    padding: 2rem 0;
+    margin: 2rem auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 0.5rem;
+    width: 80%;
+}
+
+.sub-sub-header {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #000000;
+
+}
+
+
+.button {
+    position: fixed;
+}
+
+.text {
+    size: 1rem;
+}
+
+.fifth-head {
+    font-size: 1.5rem;
 }

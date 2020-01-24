@@ -6,8 +6,8 @@
 ### Imports
 import os, platform, sys
 osEnv = platform.system()
-
 ## Checking for Modules
+
 # Pip
 if osEnv == 'Windows':
     os.system("python -m pip install -U pip")
@@ -138,7 +138,7 @@ def make():
     ez_num = session.get('Eznum', None)
     lreg = session.get('lreg', None)
     namefile = session.get('name', None)
-    f = pd.read_csv(namefile,
+    f = pd.read_csv(os.getcwd() + '/Uploads/' + namefile,
                     names=['X_val', 'Y_val', 'X_err', 'Y_err'],  # Add own names so values can become callable later
                     header=None,  # So it doesnt use the values as names
                     # na_values=['no info','.'] # So that values are treated like numbers not strings
@@ -199,8 +199,8 @@ def done():
     ## Clean up directory raw data
     os.remove(os.getcwd() + '/Uploads/' + namefile)
     #
-    return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True) # and render_template("main.html")
+    return send_from_directory(os.getcwd() + '/Uploads', filename='graph.png', as_attachment = True)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)
 
